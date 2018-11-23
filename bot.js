@@ -16,7 +16,7 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir('./komutlar/', (err, files) => {
   if (err) console.error(err);
-  log(`${files.length} komut yüklenecek.`);
+  console.log(`${files.length} komut yüklenecek.`);
   files.forEach(f => {
     let props = require(`./komutlar/${f}`);
     log(`Yüklenen komut: ${props.help.name}.`);
@@ -77,16 +77,6 @@ client.unload = command => {
     }
   });
 };
-
-client.on('message', msg => {
-  if (msg.content.toLowerCase() === 'sa') {
-		if (!msg.guild.member(msg.author).hasPermission("BAN_MEMBERS")) {
-			msg.author.sendMessage('Aleyküm selam,  hoş geldin ^^'); 
-		} else {
-		msg.reply('Aleyküm selam, hoş geldin ^^');
-		}
-	}
-});
 
 client.elevation = message => {
   if(!message.guild) {
